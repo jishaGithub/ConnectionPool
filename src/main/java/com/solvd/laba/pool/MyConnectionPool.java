@@ -1,6 +1,5 @@
 package com.solvd.laba.pool;
 
-
 import com.solvd.laba.connection.MyConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -49,6 +48,7 @@ public class MyConnectionPool {
         logger.info("Connection " + connection.getConnectionID() + " is returned back to the connection pool. Current pool size:"+
                 getConnectionPoolSize());
     }
+    
     public int getConnectionPoolSize() {
         return connectionPool.size();
     }
