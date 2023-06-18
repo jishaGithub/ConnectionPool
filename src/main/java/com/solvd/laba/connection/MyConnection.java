@@ -28,7 +28,6 @@ public class MyConnection {
         logger.info("Task completed successfully");
     }
 
-
     public void closeConnection() {
         try {
             socket.close();
