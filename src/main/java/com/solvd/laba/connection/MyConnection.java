@@ -24,7 +24,7 @@ public class MyConnection {
     }
 
     public void performAuthentication() {
-        if(isConnectionOpen) {
+        if (isConnectionOpen) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
