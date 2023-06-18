@@ -24,8 +24,6 @@ public class MyConnectionPool {
             MyConnection connection = createConnection();
             connectionPool.offer(connection);
         }
-
-
     }
 
     public MyConnection createConnection() {
