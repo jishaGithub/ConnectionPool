@@ -13,6 +13,7 @@ public class Main {
     private static final int CONNECTION_POOL_SIZE = 5;
     private static final int THREAD_POOL_SIZE = 7;
     private static final Logger logger = LogManager.getLogger(Main.class);
+    
     public static void main(String[] args) {
         MyConnectionPool myConnectionPool = MyConnectionPool.getConnectionPoolObject();
         try {
@@ -39,7 +40,6 @@ public class Main {
             }
         });
         futures.add(loadConnectionsFuture);
-
         for (int i = 0; i < THREAD_POOL_SIZE - CONNECTION_POOL_SIZE; i++) {
             CompletableFuture<Void> threadFuture = CompletableFuture.runAsync(() -> {
                 MyThread myThread = new MyThread(Thread.currentThread().getName(), myConnectionPool);
@@ -47,9 +47,7 @@ public class Main {
                 }, mySingleThreadPool);
             futures.add(threadFuture);
         }
-
         CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
-
         try {
             allFutures.get();
             mySingleThreadPool.shutdown();
